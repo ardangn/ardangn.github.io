@@ -4,17 +4,17 @@
   color-scheme: dark;
   font-family: Arial, sans-serif;
   --sky: #40c6f5;
-  --blue: #155ac4;
-  --deep-blue: #12469e;
+  --blue: #166b96;
+  --deep-blue: #14394b;
   --orange: #ff9d36;
-  --light-blue: #4bd0fc;
+  --light-blue: #b8edff;
   --light-orange: #ffb14f;
-  --edge: #123774;
+  --edge: #17384b;
   background: var(--sky);
   color: #fff;
 }
 * { box-sizing: border-box; }
-body { min-height: 100vh; margin: 0; background: radial-gradient(ellipse at 50% 15%, var(--light-blue), var(--sky) 65%, #2ca9e5); }
+body { min-height: 100vh; margin: 0; background: var(--sky) url('Tango_BG2.png') center / 100% 100% no-repeat; }
 a { color: inherit; text-underline-offset: 4px; }
 a:focus-visible { outline: 3px solid var(--light-orange); outline-offset: 2px; box-shadow: 0 0 0 6px var(--edge); }
 header, main, footer { width: min(calc(100% - 36px), 1000px); margin-inline: auto; }
@@ -53,7 +53,7 @@ nav a {
 h1 { margin: 10px 0 16px; font-size: clamp(2rem, 5vw, 3.7rem); line-height: 1.06; letter-spacing: -.045em; }
 p { font-size: 1rem; line-height: 1.65; }
 .hero p { max-width: 42ch; margin: 0 0 18px; }
-.hero img { display: block; width: min(100%, 250px); height: auto; border-radius: 22px; justify-self: center; box-shadow: 0 8px 22px #12377460; }
+.hero img { display: block; width: min(100%, 250px); height: auto; border-radius: 22px; justify-self: center; box-shadow: 0 8px 22px #14394b60; }
 .status { display: inline-block; padding: 8px 12px; background: #884303; border: 2px solid var(--light-orange); border-radius: 12px; font-size: .88rem; font-weight: 700; }
 .modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 24px 0 16px; }
 .mode {
