@@ -1,80 +1,119 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Balance suns and moons in Tango, a logic puzzle game with 250 campaign levels, Daily Challenges and Endless mode."><title>Tango: Binary Logic Puzzle | Red Koala</title><style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Balance suns and moons in Tango, a logic puzzle game with 250 campaign levels, Daily Challenges and Endless mode."><title>Tango: Binary Logic Puzzle | Red Koala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap">
+<style>
+/* Palette taken from the Tango icon: orange frame, peach sun tiles, sky-blue moon tiles, navy ink. */
 :root {
-  color-scheme: dark;
-  font-family: Arial, sans-serif;
-  --sky: #40c6f5;
-  --blue: #166b96;
-  --deep-blue: #14394b;
-  --orange: #ff9d36;
-  --light-blue: #b8edff;
-  --light-orange: #ffb14f;
-  --edge: #17384b;
+  color-scheme: light;
+  --sky: #45c8f8;
+  --sky-deep: #1b8fd6;
+  --sky-tile: #cdefff;
+  --orange: #f9a752;
+  --orange-deep: #e5741c;
+  --peach: #ffe4c6;
+  --cream: #fff8ee;
+  --ink: #163a50;
+  --ink-soft: #35566a;
+  --drop: rgba(22, 58, 80, .22);
+  --display: "Fredoka", "Arial Rounded MT Bold", "Segoe UI", Arial, sans-serif;
+  --body: "Nunito", "Segoe UI", Arial, sans-serif;
+  /* Hand-drawn tile corners, like the wobbly tile edges in the icon */
+  --wobble: 20px 24px 18px 26px / 24px 18px 26px 20px;
   background: var(--sky);
-  color: #fff;
+  color: var(--ink);
+  font-family: var(--body);
 }
 * { box-sizing: border-box; }
 body { min-height: 100vh; margin: 0; background: var(--sky) url('Tango_BG2.png') center / 100% 100% no-repeat; }
-a { color: inherit; text-underline-offset: 4px; }
-a:focus-visible { outline: 3px solid var(--light-orange); outline-offset: 2px; box-shadow: 0 0 0 6px var(--edge); }
+a { color: var(--sky-deep); font-weight: 800; text-underline-offset: 4px; }
+a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 header, main, footer { width: min(calc(100% - 36px), 1000px); margin-inline: auto; }
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  padding: 16px 0;
+
+/* Header: logo and links as small tiles */
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 20px; padding: 16px 0; }
+header a { color: var(--ink); text-decoration: none; font-family: var(--display); font-weight: 600; }
+.brand {
+  display: flex; align-items: center; gap: 10px; padding: 4px 14px 4px 4px;
+  background: var(--cream); border: 3px solid var(--orange); border-radius: 16px;
+  box-shadow: 0 3px 0 var(--orange-deep);
 }
-header a { font-weight: 700; text-decoration: none; }
-header a:hover { text-decoration: underline; }
-.brand { display: flex; align-items: center; gap: 10px; padding: 4px 12px 4px 4px; background: var(--deep-blue); border-radius: 13px; }
-.brand img { width: 46px; height: 46px; border-radius: 12px; background: white; padding: 5px; object-fit: contain; }
-nav { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.brand img { width: 44px; height: 44px; border-radius: 11px; background: #fff; padding: 5px; object-fit: contain; }
+nav { display: flex; flex-wrap: wrap; gap: 10px; }
 nav a {
-  padding: 8px 13px;
-  background: linear-gradient(var(--blue), var(--deep-blue));
-  border: 2px solid var(--edge);
-  border-radius: 11px;
-  box-shadow: inset 0 2px 0 var(--light-blue), 0 3px 0 var(--edge);
+  padding: 8px 15px; background: var(--sky-tile); border: 3px solid var(--sky-deep); border-radius: 13px;
+  box-shadow: 0 3px 0 #13689c; transition: transform .12s ease;
 }
+nav a:hover, .brand:hover { transform: translateY(-2px); }
+
+/* Hero: orange panel, like the icon's frame */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr);
-  gap: clamp(22px, 5vw, 54px);
-  align-items: center;
-  padding: clamp(20px, 5vw, 54px);
-  border: 5px solid var(--orange);
-  border-radius: 30px;
-  background: radial-gradient(ellipse at 70% 0%, var(--blue), var(--deep-blue) 85%);
-  box-shadow: inset 0 2px 0 var(--light-orange), 0 6px 0 var(--edge);
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: clamp(22px, 5vw, 54px); align-items: center;
+  padding: clamp(22px, 5vw, 54px); background: #fcbb73; border: 4px solid var(--orange-deep);
+  border-radius: 30px; box-shadow: 0 6px 0 var(--orange-deep), 0 16px 36px var(--drop);
 }
-.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-h1 { margin: 10px 0 16px; font-size: clamp(2rem, 5vw, 3.7rem); line-height: 1.06; letter-spacing: -.045em; }
-p { font-size: 1rem; line-height: 1.65; }
-.hero p { max-width: 42ch; margin: 0 0 18px; }
-.hero img { display: block; width: min(100%, 250px); height: auto; border-radius: 22px; justify-self: center; box-shadow: 0 8px 22px #14394b60; }
-.status { display: inline-block; padding: 8px 12px; background: #884303; border: 2px solid var(--light-orange); border-radius: 12px; font-size: .88rem; font-weight: 700; }
-.modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 24px 0 16px; }
+.word { display: flex; gap: 6px; margin-bottom: 14px; }
+.word span {
+  display: grid; place-items: center; width: clamp(38px, 6vw, 50px); aspect-ratio: 1;
+  font-family: var(--display); font-weight: 700; font-size: clamp(1.4rem, 3.4vw, 1.9rem); line-height: 1;
+  border-radius: 9px 11px 8px 12px; box-shadow: 0 3px 0 rgba(22, 58, 80, .25);
+}
+.word span:nth-child(odd) { background: var(--peach); color: var(--orange-deep); border: 3px solid var(--orange-deep); }
+.word span:nth-child(even) { background: var(--sky-tile); color: var(--sky-deep); border: 3px solid var(--sky-deep); }
+.word span:nth-child(1) { transform: rotate(-7deg); }
+.word span:nth-child(2) { transform: rotate(4deg) translateY(-3px); }
+.word span:nth-child(3) { transform: rotate(-3deg) translateY(2px); }
+.word span:nth-child(4) { transform: rotate(6deg) translateY(-4px); }
+.word span:nth-child(5) { transform: rotate(-5deg); }
+.eyebrow { font-size: .8rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+/* White game-title lettering with a deep-orange drop edge so it stays readable on the light orange */
+h1 {
+  margin: 8px 0 18px; font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.06;
+  color: #ffffff; text-wrap: balance;
+  text-shadow: 0 3px 0 #c95f10, 0 0 2px #c95f10, 0 8px 16px rgba(130, 55, 0, .35);
+}
+p { font-size: 1.04rem; line-height: 1.65; }
+.hero p { max-width: 42ch; margin: 0 0 18px; font-weight: 700; color: var(--ink); }
+.hero img {
+  display: block; width: min(100%, 250px); height: auto; border-radius: 50%; justify-self: center;
+  box-shadow: 0 0 0 6px var(--cream), 0 10px 26px rgba(150, 70, 0, .35);
+}
+.status {
+  display: inline-block; padding: 8px 14px; background: var(--cream); color: var(--ink);
+  border: 3px solid var(--orange-deep); border-radius: 13px; font-family: var(--display); font-weight: 600; font-size: .95rem;
+}
+
+/* Game modes: sun and moon tiles */
+.modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 26px 0 18px; }
 .mode {
-  padding: 18px;
-  border: 2px solid var(--orange);
-  border-radius: 16px;
-  background: linear-gradient(var(--blue), var(--deep-blue));
-  box-shadow: inset 0 2px 0 var(--light-orange), 0 4px 0 var(--edge);
+  padding: 20px; border-radius: var(--wobble); box-shadow: 0 5px 0 var(--edge), 0 12px 26px var(--drop);
+  display: grid; gap: 10px; align-content: start;
 }
-.mode:nth-child(2) { border-color: var(--edge); box-shadow: inset 0 2px 0 var(--light-blue), 0 4px 0 var(--edge); }
-.number { display: none; }
-h2 { margin: 0 0 8px; font-size: 1.25rem; letter-spacing: -.025em; }
-.mode p { margin: 0; }
-.support { padding: 20px; background: var(--deep-blue); border: 1px solid var(--edge); border-radius: 16px; }
-.support p { margin: 0 0 10px; }
+.mode.sun { --edge: var(--orange-deep); background: var(--peach); border: 3px solid var(--orange-deep); }
+.mode.moon { --edge: #13689c; background: var(--sky-tile); border: 3px solid var(--sky-deep); }
+.symbol { width: 30px; height: 30px; border-radius: 50%; }
+.sun .symbol { background: var(--orange-deep); box-shadow: 0 0 0 5px rgba(229, 116, 28, .2); }
+.moon .symbol { box-shadow: inset -10px 3px 0 0 var(--sky-deep); transform: rotate(-20deg); }
+h2 { margin: 0 0 6px; font-family: var(--display); font-weight: 600; font-size: 1.35rem; line-height: 1.2; color: var(--ink); }
+.mode p { margin: 0; color: var(--ink-soft); font-weight: 700; }
+
+/* Support and footer: cream tiles */
+.support {
+  padding: 22px 24px; background: var(--cream); border: 3px solid var(--sky-deep); border-radius: var(--wobble);
+  box-shadow: 0 5px 0 #13689c, 0 12px 26px var(--drop);
+}
+.support p { margin: 0 0 10px; color: var(--ink-soft); font-weight: 700; }
 .support p:last-child { margin-bottom: 0; }
-footer { margin-top: 24px; margin-bottom: 20px; padding: 14px 18px; background: var(--deep-blue); border-radius: 13px; font-size: .9rem; line-height: 1.6; }
+footer {
+  margin-top: 24px; margin-bottom: 24px; padding: 14px 18px; background: rgba(255, 248, 238, .92);
+  border: 3px solid var(--orange); border-radius: 15px; font-size: .92rem; line-height: 1.6; font-weight: 700; color: var(--ink-soft);
+}
+
 @media (max-width: 680px) {
   .hero, .modes { grid-template-columns: 1fr; }
-  .hero img { grid-row: 1; width: min(40vw, 160px); }
-  .modes { gap: 10px; }
-  .mode { padding: 14px 16px; }
+  .hero img { grid-row: 1; width: min(44vw, 170px); }
+  .modes { gap: 14px; }
+  .mode { padding: 16px 18px; grid-template-columns: auto 1fr; align-items: start; gap: 14px; }
 }
-</style></head><body><header><a class="brand" href="../" title="Red Koala home"><img src="../redkoala-logo.png" alt="Red Koala logo"><span>Home</span></a><nav aria-label="Main"><a href="./">Game</a><a href="privacy.html">Privacy</a><a href="mailto:redkoala64@gmail.com">Support</a></nav></header><main><section class="hero"><div><div class="eyebrow">A little balance. A fresh puzzle.</div><h1>Follow the clues.<br>Find your balance.</h1><p>Fill the grid with suns and moons. Keep every row and column balanced, avoid three matching symbols in a row, and follow the equal and opposite clues.</p><span class="status">Android release in preparation</span></div><img src="tango-icon.png" alt="Tango app icon with sun and moon puzzle tiles"></section><section class="modes" aria-label="Game modes"><article class="mode"><span class="number">01</span><div><h2>250 campaign levels</h2><p>Build your logic skills across Easy, Medium and Hard puzzles. Resume unfinished boards, earn stars and revisit your favourites.</p></div></article><article class="mode"><span class="number">02</span><div><h2>Daily Challenges</h2><p>Take on the same daily puzzle as other players. Optional Google Play Games leaderboards compare adjusted completion times.</p></div></article><article class="mode"><span class="number">03</span><div><h2>Endless mode</h2><p>Keep solving fresh puzzles and build your streak. Compare daily, weekly and lifetime streak rankings through Google Play Games.</p></div></article></section><section class="support"><h2>Play at your own pace</h2><p>Core puzzles work offline. Hints help you reason through the next move, while optional rewarded ads offer extra reveals. Tango contains ads and is intended for players aged 13 and older.</p><p>Weekly Challenges are coming soon. No Tango account is required; Google Play Games features are optional.</p><p>Questions? <a href="mailto:redkoala64@gmail.com">Contact Red Koala</a> or read our <a href="privacy.html">privacy policy</a>.</p></section></main><footer>© 2026 Red Koala · Tango: Binary Logic Puzzle · <a href="privacy.html">Privacy policy</a> · <a href="mailto:redkoala64@gmail.com">Contact</a></footer></body></html>
+@media (prefers-reduced-motion: reduce) { nav a, .brand { transition: none; } }
+</style></head><body><header><a class="brand" href="../" title="Red Koala home"><img src="../redkoala-logo.png" alt="Red Koala logo"><span>Home</span></a><nav aria-label="Main"><a href="./">Game</a><a href="privacy.html">Privacy</a><a href="mailto:redkoala64@gmail.com">Support</a></nav></header><main><section class="hero"><div><div class="word" role="img" aria-label="Tango"><span>T</span><span>A</span><span>N</span><span>G</span><span>O</span></div><div class="eyebrow">A little balance. A fresh puzzle.</div><h1>Follow the clues.<br>Find your balance.</h1><p>Fill the grid with suns and moons. Keep every row and column balanced, avoid three matching symbols in a row, and follow the equal and opposite clues.</p><span class="status">Android release in preparation</span></div><img src="tango-icon.png" alt="Tango app icon with sun and moon puzzle tiles"></section><section class="modes" aria-label="Game modes"><article class="mode sun"><span class="symbol" aria-hidden="true"></span><div><h2>250 campaign levels</h2><p>Build your logic skills across Easy, Medium and Hard puzzles. Resume unfinished boards, earn stars and revisit your favourites.</p></div></article><article class="mode moon"><span class="symbol" aria-hidden="true"></span><div><h2>Daily Challenges</h2><p>Take on the same daily puzzle as other players. Optional Google Play Games leaderboards compare adjusted completion times.</p></div></article><article class="mode sun"><span class="symbol" aria-hidden="true"></span><div><h2>Endless mode</h2><p>Keep solving fresh puzzles and build your streak. Compare daily, weekly and lifetime streak rankings through Google Play Games.</p></div></article></section><section class="support"><h2>Play at your own pace</h2><p>Core puzzles work offline. Hints help you reason through the next move, while optional rewarded ads offer extra reveals. Tango contains ads and is intended for players aged 13 and older.</p><p>Weekly Challenges are coming soon. No Tango account is required; Google Play Games features are optional.</p><p>Questions? <a href="mailto:redkoala64@gmail.com">Contact Red Koala</a> or read our <a href="privacy.html">privacy policy</a>.</p></section></main><footer>© 2026 Red Koala · Tango: Binary Logic Puzzle · <a href="privacy.html">Privacy policy</a> · <a href="mailto:redkoala64@gmail.com">Contact</a></footer></body></html>
