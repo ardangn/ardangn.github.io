@@ -6,8 +6,28 @@
 <meta name="description" content="Offset Key is a Maya animation tool for shifting, staggering, and randomizing keyframe timing.">
 <title>Offset Key for Maya | Red Koala</title>
 <link rel="icon" href="offset-key-icon.png">
-<style>:root{color-scheme:dark;font-family:Arial,sans-serif;background:#221b2c;color:#f8f1e6}*{box-sizing:border-box}body{margin:0}a{color:#ffd36b;text-underline-offset:4px}header,main,footer{max-width:1000px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #463a55}header a{font-weight:700;text-decoration:none}.brand{display:flex;align-items:center;gap:12px}.brand img{width:48px;height:48px;border-radius:12px;background:#fff;padding:5px;object-fit:contain}nav{display:flex;gap:22px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:42px;align-items:center;padding:54px 0 40px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#ffd36b;font-size:.8rem;font-weight:700}h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.06;letter-spacing:-.045em;margin:16px 0 24px}p{font-size:1.06rem;line-height:1.75;color:#e4d9e8}.logo{width:100%;max-width:300px;justify-self:center;background:#fff;border-radius:32px;padding:28px;box-shadow:0 18px 50px #0006}.games{border-top:1px solid #463a55;padding:36px 0;display:grid;grid-template-columns:1fr 1fr;gap:24px}.game{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start;background:#2e2540;border:1px solid #4d3f61;border-radius:24px;padding:24px;text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}.game:hover,.game:focus-visible{transform:translateY(-3px);border-color:#ffd36b}.game img{width:96px;height:96px;border-radius:22px;image-rendering:pixelated}h2{font-size:1.6rem;letter-spacing:-.02em;margin:0 0 6px;color:#f8f1e6}.game p{margin:0 0 12px;font-size:1.05rem}.status{display:inline-block;background:#3e2f4f;border:1px solid #6b5585;border-radius:30px;padding:6px 14px;font-size:.85rem;color:#f8f1e6}.more{display:block;margin-top:10px;color:#ffd36b;font-weight:600}.about{padding:8px 0 32px}footer{border-top:1px solid #463a55;color:#c9b9d2;font-size:.9rem;padding-bottom:40px}a:focus-visible{outline:3px solid #ffd36b;outline-offset:5px}@media(max-width:700px){.games{grid-template-columns:1fr}}@media(max-width:600px){header,main,footer{padding:20px}header{flex-wrap:wrap;gap:12px}nav{gap:12px;font-size:.9rem}.hero{grid-template-columns:1fr;padding-top:30px;gap:24px}.logo{width:180px;padding:16px;grid-row:1}.game{grid-template-columns:72px 1fr;padding:18px;gap:16px}.game img{width:72px;height:72px;border-radius:16px}}
-.tool-icon{width:120px;height:120px;justify-self:center}.feature{display:block}.feature p{margin:0}
+<style>
+:root{color-scheme:dark;font-family:Arial,sans-serif;background:#373737;color:#f1f1f1}
+*{box-sizing:border-box}
+body{margin:0}
+a{color:#a6d6ef;text-underline-offset:4px}
+a:focus-visible,video:focus-visible{outline:3px solid #a6d6ef;outline-offset:4px}
+header,main,footer{max-width:1000px;margin:auto;padding:24px}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-bottom:1px solid #565656}
+header a{font-weight:700;text-decoration:none}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:48px;height:48px;border-radius:12px;background:#fff;padding:5px;object-fit:contain}
+nav{display:flex;gap:22px}
+.demo{display:block;width:100%;max-height:70vh;background:#252525;border:1px solid #565656;border-radius:10px}
+.intro{padding-top:24px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#a6d6ef;font-size:.8rem;font-weight:700}
+h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.06;letter-spacing:-.045em;margin:10px 0 14px}
+p,li{font-size:1.06rem;line-height:1.65;color:#dedede}
+.features{padding-left:1.35em}
+.features li{margin-bottom:.55em}
+.features strong{color:#f1f1f1}
+footer{border-top:1px solid #565656;color:#c7c7c7;font-size:.9rem;padding-bottom:40px}
+@media(max-width:600px){header,main,footer{padding:16px}nav{gap:14px;font-size:.9rem}}
 </style>
 </head>
 <body>
@@ -16,12 +36,20 @@
 <nav aria-label="Main"><a href="../#games">Games</a><a href="../#tools">Tools</a><a href="mailto:redkoala64@gmail.com">Contact</a></nav>
 </header>
 <main>
-<section class="hero"><div><div class="eyebrow">Autodesk Maya animation tool</div><h1>Offset Key</h1><p>Experiment with timing across a rig. Shift animation earlier or later, spread movement across controls, and add variation without moving keys one by one.</p></div><img class="tool-icon" src="offset-key-icon.png" alt=""></section>
-<section class="games" aria-label="Features">
-<article class="game feature"><h2>Offset</h2><p>Move each control's keys earlier or later with its own slider. Return the slider to zero to restore the original timing, or commit the new timing when you're happy with it.</p></article>
-<article class="game feature"><h2>Randomize</h2><p>Set a minimum and maximum offset, then generate fresh timings for the controls in your list.</p></article>
-<article class="game feature"><h2>Stagger</h2><p>Set a starting offset and a step to space the controls in list order. Reorder the list to change which parts move first.</p></article>
-<article class="game feature"><h2>Border keys</h2><p>Optionally add keyframes at the first and last frames of your chosen range.</p></article>
+<video class="demo" controls playsinline preload="metadata" aria-label="Offset Key demo">
+<source src="OffSet_Tool.mp4" type="video/mp4">
+<a href="OffSet_Tool.mp4">Open the Offset Key demo video</a>
+</video>
+<section class="intro" aria-labelledby="page-title">
+<div class="eyebrow">Autodesk Maya animation tool</div>
+<h1 id="page-title">Offset Key</h1>
+<p>Experiment with timing across a rig without moving keys one by one.</p>
+<ul class="features">
+<li><strong>Offset:</strong> Shift each control's keys earlier or later with its own slider. Return it to zero to restore the original timing, or commit the change.</li>
+<li><strong>Randomize:</strong> Generate fresh offsets within the minimum and maximum you set.</li>
+<li><strong>Stagger:</strong> Apply a starting offset and a step in list order. Reorder the list to change which controls move first.</li>
+<li><strong>Border keys:</strong> Optionally add keys at the first and last frames of your chosen range.</li>
+</ul>
 </section>
 <p><a href="../#tools">&larr; Back to Tools</a></p>
 </main>
