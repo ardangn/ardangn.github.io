@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Studio Builder sets up a team of Claude Code agents inside a game project, and Studio Floor shows them working live.">
+<title>Studio Builder for Claude Code | Red Koala</title>
+<link rel="icon" href="studio-builder-icon.png">
+<style>
+:root{color-scheme:dark;font-family:Arial,sans-serif;background:#373737;color:#f1f1f1}
+*{box-sizing:border-box}
+body{margin:0}
+a{color:#a6d6ef;text-underline-offset:4px}
+a:focus-visible,video:focus-visible{outline:3px solid #a6d6ef;outline-offset:4px}
+header,main,footer{max-width:1000px;margin:auto;padding:24px}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-bottom:1px solid #565656}
+header a{font-weight:700;text-decoration:none}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:48px;height:48px;border-radius:12px;background:#fff;padding:5px;object-fit:contain}
+nav{display:flex;gap:22px}
+.demo{display:block;width:100%;max-height:70vh;background:#252525;border:1px solid #565656;border-radius:10px}
+.intro{padding-top:24px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#a6d6ef;font-size:.8rem;font-weight:700}
+h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.06;letter-spacing:-.045em;margin:10px 0 14px}
+p,li{font-size:1.06rem;line-height:1.65;color:#dedede}
+.features{padding-left:1.35em}
+.features li{margin-bottom:.55em}
+.features strong{color:#f1f1f1}
+footer{border-top:1px solid #565656;color:#c7c7c7;font-size:.9rem;padding-bottom:40px}
+@media(max-width:600px){header,main,footer{padding:16px}nav{gap:14px;font-size:.9rem}}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="../"><img src="../redkoala-logo.png" alt=""><span>Red Koala</span></a>
+<nav aria-label="Main"><a href="../#games">Games</a><a href="../#tools">Tools</a><a href="mailto:redkoala64@gmail.com">Contact</a></nav>
+</header>
+<main>
+<video class="demo" controls playsinline preload="metadata" aria-label="Studio Floor demo: agents taking tasks, working and finishing">
+<source src="studio-floor-demo.mp4" type="video/mp4">
+<a href="studio-floor-demo.mp4">Open the Studio Floor demo video</a>
+</video>
+<section class="intro" aria-labelledby="page-title">
+<div class="eyebrow">Claude Code game studio</div>
+<h1 id="page-title">Studio Builder</h1>
+<p>Set up a team of Claude Code agents inside a game project, then watch them work on the Studio Floor.</p>
+<ul class="features">
+<li><strong>Director:</strong> Plans each request, briefs the right lead, and checks the result before calling it done.</li>
+<li><strong>Leads and workers:</strong> Design, mechanics, logic, UI, art, QA and release, each with its own skills, rules and docs.</li>
+<li><strong>Parallel work:</strong> Agents work at the same time, and none overwrites a file another agent is still working on.</li>
+<li><strong>QA first:</strong> Nothing counts as finished until QA has verified it.</li>
+<li><strong>Two profiles:</strong> PC games in Unity with PlayMaker, or mobile and web games.</li>
+<li><strong>Tool setup:</strong> Agents connect to Unity, Maya, Blender or Blockbench, and install FishNet for multiplayer.</li>
+<li><strong>Studio Floor:</strong> A live panel shows every agent at its desk, the model it runs on, and a feed of briefs and finished tasks.</li>
+</ul>
+</section>
+<p><a href="../#tools">&larr; Back to Tools</a></p>
+</main>
+<footer>&copy; 2026 Red Koala &middot; <a href="mailto:redkoala64@gmail.com">Contact</a></footer>
+</body>
+</html>
